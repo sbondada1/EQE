@@ -6,7 +6,7 @@
   "scripts": {
     "test": "cross-env ENV=stage npx playwright test tests/qetest/test-url-qe.spec.ts --project chromium",
     "test:qa": "cross-env ENV=qa npx playwright test tests/qetest/test-url-qe.spec.ts -g \"Link Shop\"--project chromium --headed",
-    "test:stage1": "cross-env ENV=stage npx playwright test tests/qetest/test-url-qe.spec.ts -g \"Link Shop\" --project chromium --headed",
+    "test:stage1": "cross-env ENV=stage npx playwright test tests/qetest/test-url-qe.spec.ts -g \"clickprivacypolicy\" --project chromium --headed",
     "test:stage": "cross-env ENV=stage npx playwright test tests/qetest/test-url-qe.spec.ts --project chromium --headed",
     "test:debug": "cross-env NODE_OPTIONS=--no-warnings playwright test --debug",
     "test:ui": "cross-env NODE_OPTIONS=--no-warnings playwright test --ui",

@@ -28,6 +28,14 @@ export class faqPage {
     public technicalsupportlink;
     public affiliatelink;
     public productinfolink;
+    public chatwithbodi;
+    public signintotext;
+    public termsandconditions;
+    public privacypolicy;
+    public donotsellmyinfo;
+    public accessibilitystatement;
+    public californiasupplychain;
+    public consumerhealthdatapolicy;
 
     constructor(private page: Page) {
         this.cookieButton = this.page.getByRole('button', { name: 'Accept All Cookies' });
@@ -48,7 +56,6 @@ export class faqPage {
         this.updateaccountLink = this.page.getByRole('link', { name: 'Update Account' });
         this.updatepaymentmethodLink = this.page.getByRole('link', { name: 'Update Payment Method' });
         this.partnerformsLink = this.page.getByRole('link', { name: 'Partner Forms' });
-
         this.myshakeologylink = this.page.getByRole('link', { name: 'My Shakeology' });
         this.bodilink = this.page.getByRole('link', { name: 'BODi' });
         this.bikelink = this.page.getByRole('link', { name: 'Bike' });
@@ -57,6 +64,16 @@ export class faqPage {
         this.technicalsupportlink = this.page.getByRole('link', { name: 'Technical Support /' });
         this.affiliatelink = this.page.getByRole('link', { name: 'Affiliate Partner Support' });
         this.productinfolink = this.page.getByRole('link', { name: 'Product Info, Offers, and' });
+        this.chatwithbodi = this.page.getByText('Chat with BODi');
+        this.signintotext = this.page.getByText('Sign in to Text with BODi');
+        this.termsandconditions = this.page.getByText('Terms and Conditions');
+        this.privacypolicy = this.page.getByText('Privacy Policy');
+        this.donotsellmyinfo = this.page.getByText('Do Not Sell My Info');
+        this.accessibilitystatement = this.page.getByText('Accessibility Statement');
+        this.californiasupplychain = this.page.getByText('California Supply Chain');
+        this.consumerhealthdatapolicy = this.page.getByText('Consumer Health Data Policy');
+
+
 
     }
 
@@ -169,17 +186,44 @@ export class faqPage {
     async clickproductinfolink() {
         await this.productinfolink.click();
     }
+    async clickchatwithbodi() {
+        await this.chatwithbodi.click();
+    }
+    async clicksignintotext() {
+        await this.signintotext.click();
+
+    }
+    async clicktermsandconditions() {
+        await this.termsandconditions.click();
+    }
+
+    async clickprivacypolicy() {
+        await this.privacypolicy.click();
+    }
+
+    async clickdonotsellmyinfo() {
+        await this.donotsellmyinfo.click();
+    }
+    async clickaccessibilitystatement() {
+        await this.accessibilitystatement.click();
+    }
+    async clickcaliforniasupplychain() {
+        await this.californiasupplychain.click();
+    }
+    async clickconsumerhealthdatapolicy() {
+        await this.consumerhealthdatapolicy.click();
+
+
+    }
     async verifysiteerror() {
         if (await this.page.getByText('This site can’t be reached').isVisible()
             ||
-            await this.page.getByText('This page isn’t working').isVisible())
-            {
-                console.log('This page is not as expected ');
-                test.fail();
-            }
-            else 
-            {
-                console.log('This site content is displaying without any error');
-            }
+            await this.page.getByText('This page isn’t working').isVisible()) {
+            console.log('This page is not as expected ');
+            test.fail();
+        }
+        else {
+            console.log('This site content is displaying without any error');
+        }
     }
 }
