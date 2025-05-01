@@ -1,4 +1,4 @@
-import { Page } from '@playwright/test';
+import { test, expect, Page } from '@playwright/test';
 
 export class faqPage {
 
@@ -49,14 +49,14 @@ export class faqPage {
         this.updatepaymentmethodLink = this.page.getByRole('link', { name: 'Update Payment Method' });
         this.partnerformsLink = this.page.getByRole('link', { name: 'Partner Forms' });
 
-        this.myshakeologylink=this.page.getByRole('link', { name: 'My Shakeology' });
-        this.bodilink=this.page.getByRole('link', { name: 'BODi' });
-        this.bikelink=this.page.getByRole('link', { name: 'Bike' });
-        this.allorderslink=this.page.getByRole('link', { name: 'All Orders' });
-        this.myaccountlink=this.page.getByRole('link', { name: 'My Account' });
-        this.technicalsupportlink=this.page.getByRole('link', { name: 'Technical Support /' });
-        this.affiliatelink=this.page.getByRole('link', { name: 'Affiliate Partner Support' });
-        this.productinfolink=this.page.getByRole('link', { name: 'Product Info, Offers, and' });
+        this.myshakeologylink = this.page.getByRole('link', { name: 'My Shakeology' });
+        this.bodilink = this.page.getByRole('link', { name: 'BODi' });
+        this.bikelink = this.page.getByRole('link', { name: 'Bike' });
+        this.allorderslink = this.page.getByRole('link', { name: 'All Orders' });
+        this.myaccountlink = this.page.getByRole('link', { name: 'My Account' });
+        this.technicalsupportlink = this.page.getByRole('link', { name: 'Technical Support /' });
+        this.affiliatelink = this.page.getByRole('link', { name: 'Affiliate Partner Support' });
+        this.productinfolink = this.page.getByRole('link', { name: 'Product Info, Offers, and' });
 
     }
 
@@ -87,6 +87,11 @@ export class faqPage {
     }
     async clickLinkOrderStatus() {
         await this.orderStatusLink.click();
+    }
+
+    async verifyBodiUrl() {
+        console.log("page.url >>>> " + (this.page.url()));
+        await expect.soft(this.page).toHaveURL(/.*faq?\.bodi.*/);
     }
     async fillSearchInput(text: string) {
         await this.searchInput.fill(text);
@@ -139,7 +144,7 @@ export class faqPage {
     async clickpartnerformsLink() {
         await this.partnerformsLink.click();
     }
-   
+
     async clickmyshakeologylink() {
         await this.myshakeologylink.click();
     }
@@ -163,5 +168,18 @@ export class faqPage {
     }
     async clickproductinfolink() {
         await this.productinfolink.click();
+    }
+    async verifysiteerror() {
+        if (await this.page.getByText('This site can’t be reached').isVisible()
+            ||
+            await this.page.getByText('This page isn’t working').isVisible())
+            {
+                console.log('This page is not as expected ');
+                test.fail();
+            }
+            else 
+            {
+                console.log('This site content is displaying without any error');
+            }
     }
 }
