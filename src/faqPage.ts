@@ -36,6 +36,9 @@ export class faqPage {
     public accessibilitystatement;
     public californiasupplychain;
     public consumerhealthdatapolicy;
+    public signin;
+    public searchbox;
+    public searchicon;
 
     constructor(private page: Page) {
         this.cookieButton = this.page.getByRole('button', { name: 'Accept All Cookies' });
@@ -72,6 +75,10 @@ export class faqPage {
         this.accessibilitystatement = this.page.getByText('Accessibility Statement');
         this.californiasupplychain = this.page.getByText('California Supply Chain');
         this.consumerhealthdatapolicy = this.page.getByText('Consumer Health Data Policy');
+        this.signin = this.page.getByRole('link', { name: 'Sign In' });
+        this.searchbox = this.page.getByRole('searchbox', { name: 'Enter a Question or FAQ #' });
+        this.searchicon = this.page.locator('#searchfaq');
+        
 
 
 
@@ -104,6 +111,12 @@ export class faqPage {
     }
     async clickLinkOrderStatus() {
         await this.orderStatusLink.click();
+    }
+
+    async entersearchbox(text: string) {
+        await this.searchbox.fill(text);
+        await this.searchicon.click();
+
     }
 
     async verifyBodiUrl() {
@@ -147,6 +160,11 @@ export class faqPage {
 
     async clickmyordersLink() {
         await this.myordersLink.click();
+    }
+
+    async clicksignin() {
+        await this.signin.click();
+
     }
 
     async clickreturnandexchangeLink() {
@@ -198,6 +216,7 @@ export class faqPage {
     }
 
     async clickprivacypolicy() {
+        
         await this.privacypolicy.click();
     }
 

@@ -42,7 +42,7 @@ test.describe('Check URL and its links', async () => {
     await faqPageInstance.navigateGoBack();
   });
 
-  test('Link myordersLink', { tag: "@sanity", },async ({ page }) => {
+  test('Link MyordersLink', { tag: "@sanity", },async ({ page }) => {
     const faqPageInstance = new faqPage(page);
     await faqPageInstance.clickmyordersLink();
     await faqPageInstance.waitPagePromise(5000);
@@ -53,6 +53,27 @@ test.describe('Check URL and its links', async () => {
     await faqPageInstance.navigateGoBack();
   });
 
+
+  test('Link Sign In link', { tag: "@sanity", },async ({ page }) => {
+    const faqPageInstance = new faqPage(page);
+    
+    await faqPageInstance.clicksignin();
+    await faqPageInstance.waitPagePromise(5000);
+    await faqPageInstance.verifysiteerror();
+    await faqPageInstance.navigateGoBack();
+  });
+
+  test('Search box', { tag: "@sanity", },async ({ page }) => {
+    const faqPageInstance = new faqPage(page);
+    
+    await faqPageInstance.entersearchbox("Shakelogy");
+    await faqPageInstance.waitPagePromise(5000);
+    await faqPageInstance.verifysiteerror();
+    await expect(page).toHaveURL(/.*faq?\.bodi.*/);
+    await expect(page).toHaveTitle(/Results for/);
+    await page.getByRole('heading', { name: 'Results for "Shakeology"' }).isVisible();
+    await faqPageInstance.navigateGoBack();
+  });
   
   test('Link Manage Nutrition Subscription', { tag: "@sanity", },async ({ page }) => {
     const faqPageInstance = new faqPage(page);
@@ -69,7 +90,7 @@ test.describe('Check URL and its links', async () => {
     await faqPageInstance.verifysiteerror();
     await faqPageInstance.navigateGoBack();
   });
-  test('Order Status', { tag: "@sanity", },async ({ page }) => {
+  test('Link Order Status', { tag: "@sanity", },async ({ page }) => {
     const faqPageInstance = new faqPage(page);
     
     await faqPageInstance.clickLinkOrderStatus();
@@ -87,7 +108,7 @@ test.describe('Check URL and its links', async () => {
   });
 
 
-  test('Link updateaccountLink', { tag: "@sanity", },async ({ page }) => {
+  test('Link UpdateaccountLink', { tag: "@sanity", },async ({ page }) => {
     const faqPageInstance = new faqPage(page);
     
     await faqPageInstance.clickupdateaccountLink();
@@ -97,7 +118,7 @@ test.describe('Check URL and its links', async () => {
   });
 
 
-  test('Link updatepaymentmethodLink',{ tag: "@sanity", }, async ({ page }) => {
+  test('Link UpdatepaymentmethodLink',{ tag: "@sanity", }, async ({ page }) => {
     const faqPageInstance = new faqPage(page);
     
     await faqPageInstance.clickupdatepaymentmethodLink();
@@ -107,7 +128,7 @@ test.describe('Check URL and its links', async () => {
   });
 
 
-  test('Link partnerformsLink', { tag: "@sanity", },async ({ page }) => {
+  test('Link PartnerformsLink', { tag: "@sanity", },async ({ page }) => {
     const faqPageInstance = new faqPage(page);
     
     await faqPageInstance.clickpartnerformsLink();
@@ -128,7 +149,7 @@ test.describe('Check URL and its links', async () => {
     await faqPageInstance.navigateGoBack();
   });
 
-  test('Link clickbodilink', { tag: "@sanity", },async ({ page }) => {
+  test('Link Clickbodilink', { tag: "@sanity", },async ({ page }) => {
     const faqPageInstance = new faqPage(page);
     await faqPageInstance.clickbodilink();
     await faqPageInstance.waitPagePromise(5000);
@@ -137,7 +158,7 @@ test.describe('Check URL and its links', async () => {
 
     await faqPageInstance.navigateGoBack();
   });
-  test('Link clickbikelink',{ tag: "@sanity", }, async ({ page }) => {
+  test('Link Clickbikelink',{ tag: "@sanity", }, async ({ page }) => {
     const faqPageInstance = new faqPage(page);
    
     await faqPageInstance.clickbikelink();
@@ -148,7 +169,7 @@ test.describe('Check URL and its links', async () => {
 
     await faqPageInstance.navigateGoBack();
   });
-  test('Link clickallorderslink', { tag: "@sanity", },async ({ page }) => {
+  test('Link Clickallorderslink', { tag: "@sanity", },async ({ page }) => {
     const faqPageInstance = new faqPage(page);
     await faqPageInstance.clickallorderslink();
     await faqPageInstance.waitPagePromise(5000);
@@ -158,7 +179,7 @@ test.describe('Check URL and its links', async () => {
 
     await faqPageInstance.navigateGoBack();
   });
-  test('Link clickmyaccountlink', { tag: "@sanity", },async ({ page }) => {
+  test('Link Clickmyaccountlink', { tag: "@sanity", },async ({ page }) => {
     const faqPageInstance = new faqPage(page);
     await faqPageInstance.clickmyaccountlink();
     await faqPageInstance.waitPagePromise(5000);
@@ -167,7 +188,7 @@ test.describe('Check URL and its links', async () => {
 
     await faqPageInstance.navigateGoBack();
   });
-  test('Link clicktechnicalsupportlink', { tag: "@sanity", },async ({ page }) => {
+  test('Link Clicktechnicalsupportlink', { tag: "@sanity", },async ({ page }) => {
     const faqPageInstance = new faqPage(page);
     await faqPageInstance.clicktechnicalsupportlink();
     await faqPageInstance.waitPagePromise(5000);
@@ -177,7 +198,7 @@ test.describe('Check URL and its links', async () => {
 
     await faqPageInstance.navigateGoBack();
   });
-  test('Link clickaffiliatelink', { tag: "@sanity", },async ({ page }) => {
+  test('Link Clickaffiliatelink', { tag: "@sanity", },async ({ page }) => {
     const faqPageInstance = new faqPage(page);
     await faqPageInstance.clickaffiliatelink();
     await faqPageInstance.waitPagePromise(5000);
@@ -187,7 +208,7 @@ test.describe('Check URL and its links', async () => {
 
     await faqPageInstance.navigateGoBack();
   });
-  test('Link clickproductinfolink',{ tag: "@sanity", }, async ({ page }) => {
+  test('Link Clickproductinfolink',{ tag: "@sanity", }, async ({ page }) => {
     const faqPageInstance = new faqPage(page);
     await faqPageInstance.clickproductinfolink();
     await faqPageInstance.waitPagePromise(5000);
@@ -198,7 +219,7 @@ test.describe('Check URL and its links', async () => {
   });
 
 
-  test('Link clickchatwithbodi',{ tag: "@sanity", }, async ({ page }) => {
+  test('Link Clickchatwithbodi',{ tag: "@sanity", }, async ({ page }) => {
     const faqPageInstance = new faqPage(page);
     await faqPageInstance.waitPagePromise(5000);
     await page.getByRole('button', { name: 'Close this dialog' }).click();
@@ -210,7 +231,7 @@ test.describe('Check URL and its links', async () => {
     await faqPageInstance.navigateGoBack();
   });
 
-  test('Link clicksignintotext',{ tag: "@sanity", }, async ({ page }) => {
+  test('Link Clicksignintotext',{ tag: "@sanity", }, async ({ page }) => {
     const faqPageInstance = new faqPage(page);
     await faqPageInstance.waitPagePromise(5000);
     await page.getByRole('button', { name: 'Close this dialog' }).click();
@@ -222,7 +243,7 @@ test.describe('Check URL and its links', async () => {
     await faqPageInstance.navigateGoBack();
   });
 
-  test('Link clicktermsandconditions',{ tag: "@sanity", }, async ({ page }) => {
+  test('Link Clicktermsandconditions',{ tag: "@sanity", }, async ({ page }) => {
     const faqPageInstance = new faqPage(page);
     await faqPageInstance.waitPagePromise(5000);
     await page.getByRole('button', { name: 'Close this dialog' }).click();
@@ -234,11 +255,12 @@ test.describe('Check URL and its links', async () => {
     await faqPageInstance.navigateGoBack();
   });
 
-  test('Link clickprivacypolicy',{ tag: "@sanity", }, async ({ page }) => {
+  test('Link Clickprivacypolicy',{ tag: "@sanity", }, async ({ page }) => {
     const faqPageInstance = new faqPage(page);
     await faqPageInstance.waitPagePromise(10000);
     await page.getByRole('button', { name: 'Close this dialog' }).click();
     await faqPageInstance.waitPagePromise(10000);
+    // await page.pause();
     // await faqPageInstance.clickprivacypolicy();
     await faqPageInstance.waitPagePromise(5000);
     await faqPageInstance.verifysiteerror();
@@ -247,7 +269,7 @@ test.describe('Check URL and its links', async () => {
     await faqPageInstance.navigateGoBack();
   });
 
-  test('Link clickdonotsellmyinfo',{ tag: "@sanity", }, async ({ page }) => {
+  test('Link Clickdonotsellmyinfo',{ tag: "@sanity", }, async ({ page }) => {
     const faqPageInstance = new faqPage(page);
     await faqPageInstance.waitPagePromise(5000);
     await page.getByRole('button', { name: 'Close this dialog' }).click();
@@ -259,7 +281,7 @@ test.describe('Check URL and its links', async () => {
     await faqPageInstance.navigateGoBack();
   });
 
-  test('Link clickaccessibilitystatement',{ tag: "@sanity", }, async ({ page }) => {
+  test('Link Clickaccessibilitystatement',{ tag: "@sanity", }, async ({ page }) => {
     const faqPageInstance = new faqPage(page);
     await faqPageInstance.waitPagePromise(5000);
     await page.getByRole('button', { name: 'Close this dialog' }).click();
@@ -271,7 +293,7 @@ test.describe('Check URL and its links', async () => {
     await faqPageInstance.navigateGoBack();
   });
 
-  test('Link clickcaliforniasupplychain',{ tag: "@sanity", }, async ({ page }) => {
+  test('Link Clickcaliforniasupplychain',{ tag: "@sanity", }, async ({ page }) => {
     const faqPageInstance = new faqPage(page);
     await faqPageInstance.waitPagePromise(5000);
     await page.getByRole('button', { name: 'Close this dialog' }).click();
@@ -283,7 +305,7 @@ test.describe('Check URL and its links', async () => {
     await faqPageInstance.navigateGoBack();
   });
 
-  test('Link clickconsumerhealthdatapolicy',{ tag: "@sanity", }, async ({ page }) => {
+  test('Link Clickconsumerhealthdatapolicy',{ tag: "@sanity", }, async ({ page }) => {
     const faqPageInstance = new faqPage(page);
     await faqPageInstance.waitPagePromise(5000);
     await page.getByRole('button', { name: 'Close this dialog' }).click();
