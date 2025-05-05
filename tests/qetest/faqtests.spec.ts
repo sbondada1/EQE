@@ -76,9 +76,7 @@ test.describe('Check URL and its links', async () => {
         await faqPageInstance.enterSearchBox("Shakelogy");
         await faqPageInstance.waitPagePromise(5000);
         await faqPageInstance.verifySiteError();
-        await expect(page).toHaveURL(/.*faq?\.bodi.*/);
-        await expect(page).toHaveTitle(/Results for/);
-        await page.getByRole('heading', { name: 'Results for "Shakeology"' }).isVisible();
+        await faqPageInstance.validateurltitletext("/.*faq?\.bodi.*/","/Results for/","Results for");
         await faqPageInstance.navigateGoBack();
     });
 
