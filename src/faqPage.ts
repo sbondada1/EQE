@@ -70,7 +70,8 @@ export class faqPage {
         this.chatwithbodi = this.page.getByText('Chat with BODi');
         this.signintotext = this.page.getByText('Sign in to Text with BODi');
         this.termsandconditions = this.page.getByText('Terms and Conditions');
-        this.privacypolicy = this.page.getByText('Privacy Policy');
+        // this.privacypolicy = this.page.getByText('Privacy Policy');
+        this.privacypolicy = this.page.getByRole('link', {name :'Privacy Policy'});
         this.donotsellmyinfo = this.page.getByText('Do Not Sell My Info');
         this.accessibilitystatement = this.page.getByText('Accessibility Statement');
         this.californiasupplychain = this.page.getByText('California Supply Chain');

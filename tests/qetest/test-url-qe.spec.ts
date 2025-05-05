@@ -261,8 +261,8 @@ test.describe('Check URL and its links', async () => {
     await page.getByRole('button', { name: 'Close this dialog' }).click();
     await faqPageInstance.waitPagePromise(10000);
     // await page.pause();
-    // await faqPageInstance.clickprivacypolicy();
-    await faqPageInstance.waitPagePromise(5000);
+    await faqPageInstance.clickprivacypolicy();
+    // await faqPageInstance.waitPagePromise(5000);
     await faqPageInstance.verifysiteerror();
     // await expect(page).toHaveTitle(/BODi Signin/);
 
