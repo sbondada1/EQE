@@ -242,18 +242,26 @@ export class faqPage {
     async clickconsumerhealthdatapolicy() {
         await this.consumerHealthDataPolicy.click();
     }
-    async validateurltitletext(url: string,title: string,text: string) {
-        // await this.expect.page.toHaveURL(url);
-        // await this.expect(page).toHaveTitle(title);
-        // await this.page.getByRole('heading', { name: 'text' }).isVisible();
+    async validateurltitletext({page},url: string,title: string,text: string) {
+        await expect.soft(this.page).toHaveURL(/.*checkout/);
+        await expect(page.getByRole('button', { name: 'Join BODi' })).toBeVisible();
+        await this.page.getByRole('heading', { name: 'text' }).isVisible();
         
     }
     async verifySiteError() {
+
+
+         
+
         if (await this.page.getByText('This site can’t be reached').isVisible()
             ||
             await this.page.getByText('This page isn’t working').isVisible()) {
             console.log('This page is not as expected ');
+            // test.fail('Failing','it failed','dfs');
             test.fail();
+          
+            
+            
         }
         else {
             console.log('This site content is displaying without any error');

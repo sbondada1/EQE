@@ -14,7 +14,8 @@ test.describe('Check URL and its links', async () => {
 
         await faqPageInstance.validatePageURLwithExpectedURL(process.env.FAQ_URL || 'https://default-url.com');
         await expect(page).toHaveTitle(/BODI/);
-        await page.getByText('Welcome to BODi Support').isVisible();
+        await expect(page.locator('body')).toContainText('Welcome to BODi Support');
+        // await page.getByText('1Welcome to BODi Support').isVisible();
         await faqPageInstance.verifySiteError();
         if(await page.getByRole('img', { name: 'Close this dialog' }).isVisible()){
         console.log("before Clicking on the cookie dialog");
@@ -73,10 +74,28 @@ test.describe('Check URL and its links', async () => {
 
     test('Search box', { tag: "@sanity", }, async ({ page }) => {
         const faqPageInstance = new faqPage(page);
-        await faqPageInstance.enterSearchBox("Shakelogy");
+        await faqPageInstance.enterSearchBox("Shakeology");
         await faqPageInstance.waitPagePromise(5000);
         await faqPageInstance.verifySiteError();
-        await faqPageInstance.validateurltitletext("/.*faq?\.bodi.*/","/Results for/","Results for");
+
+        await expect(page).toHaveTitle(/.*Results for/);
+        // await page.getByRole('heading', { name: '1SHAKEOLOGY' }).isVisible();
+        // await expect(page.locator('body')).toContainText('SHAKEOLOGY');
+
+        // const element = page.locator('xpath=//*[@id="gladly-help-center"]/div/div/h3'); // or use a selector like 'h1', '.class', etc.
+        // await expect(element).toHaveText('SHAKEOLOGY');
+
+
+        await expect.soft(page).toHaveURL(/.*help\?s=.*/);
+
+        // await page.getByText('Welcome to BODi Support').isVisible();
+
+        // await expect(page.locator('body')).toContainText('Vitamin and Mineral Levels"');
+        
+        // await expect(page.getByRole('button', { name: 'Join BODi' })).toBeVisible();
+        
+
+        // await faqPageInstance.validateurltitletext({page},"/.*faq?\.bodi.*/","/Results for/","Results for");
         await faqPageInstance.navigateGoBack();
     });
 
@@ -85,6 +104,54 @@ test.describe('Check URL and its links', async () => {
         await faqPageInstance.clickLinkAndValidate("manageNutritionSubscriptionLink");
         // await faqPageInstance.clickLinkManageNutritionSubscription();
         await faqPageInstance.waitPagePromise(5000);
+
+        // await expect(page).getByText('This page isn’t working').isVisible()
+        // await expect(page.getByText('This page isn’t working')).toBeVisible();
+
+        // await expect(page.getByText('This page isn’t working'));
+
+        const isErrorVisible = await page.getByText('This page isn’t working').isVisible();
+
+        if (isErrorVisible) {
+        console.log('Error page "This page isn’t working" is visible!');
+        // You can also throw, fail, or handle it differently here
+        }
+        else
+        {
+            console.log('Error page "This page isn’t working" is not visible!');
+        }
+
+        const isErrorVisible1 = await page.getByText('This site can’t be reached').isVisible();
+
+        // await expect.soft(page).not.toHaveURL(/.*cant/);
+
+        // await expect(page).not.toHaveURL(/.*cant/);
+
+        // await expect(page).not
+
+        // await expect(page.getByText('This site can’t be reached')).toBeVisible();
+
+
+        if (isErrorVisible1) {
+        console.log('Error page "This site can’t be reached" is visible!');
+        
+
+        // console.assert()
+        
+
+
+
+        // You can also throw, fail, or handle it differently here
+        }
+        else
+        {
+            console.log('Error page "This site can’t be reached" is not visible!');
+        }
+
+
+        // await expect('xpath=//*[@id="main-message"]/h1/span').toBeEnab
+
+
         await faqPageInstance.verifySiteError();
         await faqPageInstance.navigateGoBack();
     });
