@@ -258,6 +258,7 @@ export class faqPage {
             await this.page.getByText('This page isn’t working').isVisible()) {
             console.log('This page is not as expected ');
             // test.fail('Failing','it failed','dfs');
+            console.error("failure");
             test.fail();
           
             

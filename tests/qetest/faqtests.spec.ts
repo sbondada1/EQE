@@ -32,7 +32,7 @@ test.describe('Check URL and its links', async () => {
     test('Link Shop', { tag: "@sanity", }, async ({ page }) => {
 
         const faqPageInstance = new faqPage(page);
-        await faqPageInstance.clickLinkAndValidate("linkShop");
+        await faqPageInstance.clickLinkAndValidate("shopLink");
         await faqPageInstance.verifySiteError();
         await faqPageInstance.navigateGoBack();
 
@@ -40,7 +40,7 @@ test.describe('Check URL and its links', async () => {
 
     test('Link Stream', { tag: "@sanity", }, async ({ page }) => {
         const faqPageInstance = new faqPage(page);
-        await faqPageInstance.clickLinkAndValidate("linkStream");
+        await faqPageInstance.clickLinkAndValidate("streamLink");
         await faqPageInstance.verifySiteError();
         await faqPageInstance.navigateGoBack();
     });
